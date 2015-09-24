@@ -23,14 +23,12 @@ void sorting_table_bubble(int tab[], int size)
 		{
 			if (tab[j] > tab[j+1])
 			swap (tab[j], tab[j+1]); 
-			
-			
 		}
 	}
 	for (int k = 0; k<size; k++)
-			{
+		{
 			cout << "count: " << k << " = " << tab[k] << endl;
-			}		
+		}		
 }
 
 // selectionsort - sortowanie przez wstawianie
@@ -78,10 +76,6 @@ int main()
 	int table[10];
 	int count = 0;
 	int choice;
-
-
-
-
 
 	do
 	{
