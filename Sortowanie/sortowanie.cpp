@@ -12,9 +12,23 @@ int rand_number()
 	return number;
 }
 
+int own_numbers(int *tab)
+{
+	cout << "Podaj dziesiec liczb calowitych: " << endl;
+	
+	for (int i=0; i<10;i++)
+	{
+		cin >> tab[i];
+	}
+
+	return *tab;
+}
+
+
+
 
 //bubblesort
-void sorting_table_bubble(int tab[], int size)
+void sorting_table_bubble(int *tab, int size)
 {	
 	int i,j;
 	for ( i = 0 ; i<size; i++)
@@ -23,17 +37,19 @@ void sorting_table_bubble(int tab[], int size)
 		{
 			if (tab[j] > tab[j+1])
 			swap (tab[j], tab[j+1]); 
+			
+			
 		}
 	}
 	for (int k = 0; k<size; k++)
-		{
+			{
 			cout << "count: " << k << " = " << tab[k] << endl;
-		}		
+			}		
 }
 
 // selectionsort - sortowanie przez wstawianie
 
-void selectionsort (int table[], int size)
+void selectionsort (int *table, int size)
 {
 	int i,j,k;
 
@@ -70,26 +86,39 @@ void selectionsort (int table[], int size)
 
 
 
-
 int main()
 {
-	int table[10];
+	int *table;
 	int count = 0;
 	int choice;
+
+	table = new int [10];
 
 	do
 	{
 	cout << endl;
+	cout << "Wprowadz wlasne 10 liczb [0] " << endl;
 	cout << "Wylosowac liczby [1] " << endl;
 	cout << "BubleSort [2] " << endl;
 	cout << "Selectionsort [3] " << endl;
 	cout << "Wyjscie z programu [4] " << endl;
 	cout << endl;
-	cout << "podaj co chcesz zrobic [1 2 3 4] : " << endl;
+	cout << "podaj co chcesz zrobic [0 1 2 3 4] : " << endl;
 	cin >> choice;
 
 	switch (choice)
 	{
+	case 0:
+
+
+
+		own_numbers(table);
+		for (int i=0;i<10;i++)
+		{
+			cout << "tab " << "[ " << i << " ] " << " = " << table[i] << endl;
+		}
+		break;
+
 		case 1:
 		do
 		{
@@ -105,7 +134,7 @@ int main()
 		case 2:
 		if (choice == 2)
 		{
-			cout << "najpierw wylosuj liczby !!!! - wybierz 1" << endl;
+			cout << "najpierw wprowadz albo wylosuj liczby: [0], [1]" << endl;
 		}
 		else
 		{
@@ -120,7 +149,7 @@ int main()
 		case 3:
 		if (choice == 3)
 		{
-		cout << "najpierw wylosuj liczby !!!! - wybierz 1" << endl;
+		cout << "najpierw wprowadz albo wylosuj liczby: [0], [1]" << endl;
 		}
 		else
 		{
@@ -132,19 +161,20 @@ int main()
 		break;
 
 		case 4:
-		int choice1;
 		cout << "wyjscie z programu" << endl;
 		
 		break;
 
 		default:
-		cout << "wybrano inna liczbe, wybierz jedna z [1 2 3 4] " << endl;
+		cout << "wybrano inna liczbe, wybierz jedna z [0 1 2 3 4] " << endl;
 	
 		break;
 	}
 
 	}
 	while (true);
+
+	delete [] table;
 	
 	cin.get();
 	cin.get();
